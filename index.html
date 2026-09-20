@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rejs Ateny–Ateny 10–17.10 — mapa atrakcji</title>
+<style>
+  :root {
+    --foreground:#1b1f24; --muted-foreground:#5d6672;
+    --border:#d8dde3; --card:#ffffff; --accent:#e4572e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --foreground:#e8ecf1; --muted-foreground:#98a2b0;
+            --border:#333b45; --card:#1c2128; }
+    body { background:#13171c; }
+  }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    color:var(--foreground); margin:0; padding:18px 16px 28px;
+    max-width:1100px; margin-inline:auto;
+  }
+  h1 { font-size:19px; margin:0 0 4px; }
+  .sub { font-size:13px; color:var(--muted-foreground); margin:0 0 16px; }
+  #wrap { width:100%; min-width:300px; }
+  #map { width:100%; height:560px; border:1px solid var(--border); border-radius:10px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 10px 0; }
+  .btn {
+    cursor:pointer; padding:6px 11px; border-radius:999px;
+    border:1px solid var(--border); background:var(--card);
+    color:var(--foreground); font-size:13px; font-family:inherit;
+    display:flex; align-items:center; gap:7px;
+  }
+  .btn.off { opacity:.42; }
+  .swatch { width:11px; height:11px; border-radius:3px; }
+  .legend { margin-top:10px; font-size:12.5px; color:var(--muted-foreground); line-height:1.7; }
+  .legend span.k { display:inline-flex; align-items:center; gap:6px; margin-right:16px; }
+  .dot { width:11px; height:11px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.35); }
+  .leaflet-popup-content { font-size:13px; line-height:1.5; margin:10px 12px; }
+  .leaflet-popup-content b { font-size:13.5px; }
+  .tag { font-size:11px; text-transform:uppercase; letter-spacing:.5px; opacity:.65; }
+</style>
+</head>
+<body>
+<h1>Rejs Ateny–Ateny · 10–17.10</h1>
+<p class="sub">Mapa atrakcji i warianty trasy. Kliknij punkt po opis, przyciskami przełączasz warianty.</p>
+<div id="wrap">
+  <div class="bar" id="bar"></div>
+  <div id="map"></div>
+  <div class="legend">
+    <span class="k"><i class="dot" style="background:#e4572e"></i> postój / port</span>
+    <span class="k"><i class="dot" style="background:#2e86ab"></i> atrakcja z wody</span>
+    <span class="k"><i class="dot" style="background:#7d5ba6"></i> zabytek / kultura</span>
+    <span class="k"><i class="dot" style="background:#3a9e5c"></i> plaża / kąpiel</span>
+    <br>Kliknij punkt po opis. Przyciski wyżej włączają i wyłączają warianty trasy.
+  </div>
+</div>
+<script>
+const P = [
+ // [lat, lon, nazwa, kategoria, opis]
+ [37.9128,23.7010,"Marina Alimos","port","Start i meta. Check-in sob 10.10, zdanie jachtu sob 17.10."],
+ [37.7086,23.4566,"Perdika, Aegina","port","Rybacka zatoka na zachodnim brzegu Eginy. Tawerny nad wodą, pistacje."],
+ [37.7536,23.5334,"Świątynia Afai","zabytek","Najlepiej zachowana świątynia archaiczna poza Atenami. Ok. 500 r. p.n.e."],
+ [37.7020,23.3430,"Agkistri","plaza","Sosnowa wyspa obok Eginy. Przystanek na kąpiel w drodze powrotnej."],
+ [37.4990,23.4527,"Poros","port","Wąski kanał Poros, miasteczko amfiteatralne, zegar nad portem. Gaj cytrusowy na lądzie stałym."],
+ [37.3494,23.4658,"Hydra (port)","port","Bez samochodów — tylko osły i łodzie. Port-amfiteatr, kamienne rezydencje armatorów."],
+ [37.3460,23.4420,"Vlychos / Spilia","plaza","Kąpieliska na skałach 20 min spacerem od portu Hydry. Zachód słońca."],
+ [37.2620,23.1560,"Spetses","port","Stare Miasto, muzeum Boubouliny, objazd wyspy skuterem lub bryczką."],
+ [37.3230,23.1420,"Porto Cheli","port","Duża osłonięta zatoka na stałym lądzie, bezpieczna przy każdym wietrze."],
+ [37.3880,23.2480,"Ermioni","port","Półwysep z sosnami, kotwicowisko po obu stronach. Spokojny wieczór."],
+ [37.5960,23.0790,"Teatr w Epidauros","zabytek","UNESCO. Akustyka — szept ze sceny słychać w ostatnim rzędzie. IV w. p.n.e."],
+ [37.6300,23.1600,"Palaia Epidavros","port","Zatopione antyczne miasto tuż pod powierzchnią — snorkel nad ruinami."],
+ [37.6500,24.0250,"Przylądek Sounion","zabytek","Świątynia Posejdona na klifie. Z wody o zachodzie słońca — najlepszy ostatni wieczór rejsu."],
+
+ [37.6650,24.3200,"Vourkari, Kea","port","Głęboka, osłoniona zatoka. Brama do Cyklad, 35 Mm od Alimos."],
+ [37.6720,24.3450,"Lew z Kea","zabytek","Archaiczny lew wykuty w skale, VI w. p.n.e. Spacer z Ioulidy."],
+ [37.4180,24.3830,"Kolona, Kythnos","plaza","Piaszczysty przesmyk łączący wyspę z wysepką — woda z obu stron. Kotwicowisko."],
+ [37.4380,24.4330,"Loutra, Kythnos","plaza","Gorące źródła termalne wpadające prosto do morza, mały port."],
+ [37.1470,24.5150,"Serifos (Livadi)","port","Port + Chora na szczycie góry, jedna z najładniejszych na Cykladach."],
+ [36.9890,24.6700,"Kamares, Sifnos","port","Główny port Sifnos. Wyspa nr 1 na Cykladach jeśli chodzi o jedzenie."],
+ [36.9330,24.6600,"Vathi, Sifnos","port","Zamknięta zatoka-worek, świetne schronienie i kotwiczenie."],
+ [36.9200,24.7530,"Chrissopigi","zabytek","Klasztor na skalnym cyplu odciętym szczeliną. Ikona Sifnos."],
+ [36.9770,24.7550,"Kastro, Sifnos","zabytek","Średniowieczne miasteczko-forteca nad urwiskiem, weneckie herby w murach."],
+
+ [36.7230,24.4470,"Ormos Milou / Adamas","port","Ogromna osłonięta zatoka wulkaniczna — schronienie przy froncie z W/SW. Port Adamas ciasny."],
+ [36.6580,24.3400,"Kleftiko","woda","Białe skały, jaskinie i tunele dostępne WYŁĄCZNIE z wody. Kotwiczyć na dzień — otwarte na S/SW, nie nocować."],
+ [36.7560,24.4690,"Sarakiniko","plaza","Księżycowy krajobraz z białego tufu wulkanicznego. Najbardziej rozpoznawalne miejsce Milos."],
+ [36.7480,24.4230,"Plaka (Chora Milos)","zabytek","Stolica wyspy na grani, zachód słońca z ruin kasztelu."],
+ [36.7580,24.5200,"Papafragas","woda","Wąskie fiordy wcięte w skałę, mini-jaskinie. Wejście łódką lub od góry."],
+ [36.7650,24.6600,"Polyaigos","woda","Bezludna wyspa przy Kimolos. Najczystsza woda w Grecji. Kotwicowisko Ormos Ammoudaraki."],
+ [36.7900,24.5700,"Kimolos","port","Cicha sąsiadka Milos, bez tłumów. Przystanek w drodze na Polyaigos."]
+];
+
+const COL = {port:"#e4572e", woda:"#2e86ab", zabytek:"#7d5ba6", plaza:"#3a9e5c"};
+const LBL = {port:"postój / port", woda:"atrakcja z wody", zabytek:"zabytek", plaza:"plaża / kąpiel"};
+
+const map = L.map('map', {scrollWheelZoom:false}).setView([37.35,23.85], 8);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  {attribution:'&copy; OpenStreetMap, &copy; CARTO', maxZoom:18}).addTo(map);
+
+P.forEach(p=>{
+  L.circleMarker([p[0],p[1]], {radius:7, color:'#fff', weight:2, fillColor:COL[p[3]], fillOpacity:1})
+   .addTo(map)
+   .bindPopup(`<b>${p[2]}</b><br><span class="tag">${LBL[p[3]]}</span><br>${p[4]}`);
+});
+
+const byName = {}; P.forEach(p=>byName[p[2]]=[p[0],p[1]]);
+const R = n => byName[n];
+
+const ROUTES = [
+ {name:"Wariant Milos (główny)", color:"#e4572e", dash:null, pts:
+   ["Marina Alimos","Poros","Hydra (port)","Ormos Milou / Adamas","Polyaigos","Ormos Milou / Adamas","Vathi, Sifnos","Serifos (Livadi)","Kolona, Kythnos","Vourkari, Kea","Marina Alimos"]},
+ {name:"Wariant A — Sarońska", color:"#3a9e5c", dash:"8,6", pts:
+   ["Marina Alimos","Perdika, Aegina","Poros","Hydra (port)","Spetses","Ermioni","Palaia Epidavros","Agkistri","Marina Alimos"]},
+ {name:"Wariant B — zach. Cyklady", color:"#7d5ba6", dash:"2,7", pts:
+   ["Marina Alimos","Vourkari, Kea","Kolona, Kythnos","Serifos (Livadi)","Kamares, Sifnos","Loutra, Kythnos","Przylądek Sounion","Marina Alimos"]}
+];
+
+const bar = document.getElementById('bar');
+const layers = ROUTES.map(r=>{
+  const line = L.polyline(r.pts.map(R), {color:r.color, weight:3.2, opacity:.85, dashArray:r.dash});
+  const b = document.createElement('button');
+  b.className='btn';
+  b.innerHTML = `<i class="swatch" style="background:${r.color}"></i>${r.name}`;
+  b.onclick = ()=>{
+    if(map.hasLayer(line)){ map.removeLayer(line); b.classList.add('off'); }
+    else { line.addTo(map); b.classList.remove('off'); }
+  };
+  bar.appendChild(b);
+  return line;
+});
+layers[0].addTo(map);
+document.querySelectorAll('.btn')[1].classList.add('off');
+document.querySelectorAll('.btn')[2].classList.add('off');
+
+map.fitBounds(L.latLngBounds(P.map(p=>[p[0],p[1]])).pad(0.08));
+</script>
+</body>
+</html>
