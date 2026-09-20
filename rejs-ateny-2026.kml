@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>Rejs Ateny–Ateny 10–17.10</name>
+<description>Atrakcje i warianty trasy</description>
+<Style id="p_port"><IconStyle><color>ff2e57e4</color><scale>1.1</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle>
+<LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="p_woda"><IconStyle><color>ffab862e</color><scale>1.1</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle>
+<LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="p_zabytek"><IconStyle><color>ffa65b7d</color><scale>1.1</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle>
+<LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="p_plaza"><IconStyle><color>ff5c9e3a</color><scale>1.1</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle>
+<LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="r_WariantMilos"><LineStyle><color>ff2e57e4</color><width>4</width></LineStyle></Style>
+<Style id="r_WariantASaro"><LineStyle><color>ff5c9e3a</color><width>4</width></LineStyle></Style>
+<Style id="r_WariantBzach"><LineStyle><color>ffa65b7d</color><width>4</width></LineStyle></Style>
+<Folder><name>Postoje i porty</name>
+<Placemark><name>Marina Alimos</name>
+<description><![CDATA[Start i meta. Check-in sob 10.10, zdanie jachtu sob 17.10.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.7010,37.9128,0</coordinates></Point></Placemark>
+<Placemark><name>Perdika, Aegina</name>
+<description><![CDATA[Rybacka zatoka na zachodnim brzegu Eginy. Tawerny nad wodą, pistacje.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.4566,37.7086,0</coordinates></Point></Placemark>
+<Placemark><name>Poros</name>
+<description><![CDATA[Wąski kanał Poros, miasteczko amfiteatralne, zegar nad portem. Gaj cytrusowy na lądzie stałym.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.4527,37.4990,0</coordinates></Point></Placemark>
+<Placemark><name>Hydra (port)</name>
+<description><![CDATA[Bez samochodów — tylko osły i łodzie. Port-amfiteatr, kamienne rezydencje armatorów.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.4658,37.3494,0</coordinates></Point></Placemark>
+<Placemark><name>Spetses</name>
+<description><![CDATA[Stare Miasto, muzeum Boubouliny, objazd wyspy skuterem lub bryczką.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.1560,37.2620,0</coordinates></Point></Placemark>
+<Placemark><name>Porto Cheli</name>
+<description><![CDATA[Duża osłonięta zatoka na stałym lądzie, bezpieczna przy każdym wietrze.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.1420,37.3230,0</coordinates></Point></Placemark>
+<Placemark><name>Ermioni</name>
+<description><![CDATA[Półwysep z sosnami, kotwicowisko po obu stronach. Spokojny wieczór.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.2480,37.3880,0</coordinates></Point></Placemark>
+<Placemark><name>Palaia Epidavros</name>
+<description><![CDATA[Zatopione antyczne miasto tuż pod powierzchnią — snorkel nad ruinami.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>23.1600,37.6300,0</coordinates></Point></Placemark>
+<Placemark><name>Vourkari, Kea</name>
+<description><![CDATA[Głęboka, osłoniona zatoka. Brama do Cyklad, 35 Mm od Alimos.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>24.3200,37.6650,0</coordinates></Point></Placemark>
+<Placemark><name>Serifos (Livadi)</name>
+<description><![CDATA[Port + Chora na szczycie góry, jedna z najładniejszych na Cykladach.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>24.5150,37.1470,0</coordinates></Point></Placemark>
+<Placemark><name>Kamares, Sifnos</name>
+<description><![CDATA[Główny port Sifnos. Wyspa nr 1 na Cykladach jeśli chodzi o jedzenie.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>24.6700,36.9890,0</coordinates></Point></Placemark>
+<Placemark><name>Vathi, Sifnos</name>
+<description><![CDATA[Zamknięta zatoka-worek, świetne schronienie i kotwiczenie.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>24.6600,36.9330,0</coordinates></Point></Placemark>
+<Placemark><name>Ormos Milou / Adamas</name>
+<description><![CDATA[Ogromna osłonięta zatoka wulkaniczna — schronienie przy froncie z W/SW. Port Adamas ciasny.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>24.4470,36.7230,0</coordinates></Point></Placemark>
+<Placemark><name>Kimolos</name>
+<description><![CDATA[Cicha sąsiadka Milos, bez tłumów. Przystanek w drodze na Polyaigos.]]></description>
+<styleUrl>#p_port</styleUrl>
+<Point><coordinates>24.5700,36.7900,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Atrakcje tylko z wody</name>
+<Placemark><name>Kleftiko</name>
+<description><![CDATA[Białe skały, jaskinie i tunele dostępne WYŁĄCZNIE z wody. Kotwiczyć na dzień — otwarte na S/SW, nie nocować.]]></description>
+<styleUrl>#p_woda</styleUrl>
+<Point><coordinates>24.3400,36.6580,0</coordinates></Point></Placemark>
+<Placemark><name>Papafragas</name>
+<description><![CDATA[Wąskie fiordy wcięte w skałę, mini-jaskinie. Wejście łódką lub od góry.]]></description>
+<styleUrl>#p_woda</styleUrl>
+<Point><coordinates>24.5200,36.7580,0</coordinates></Point></Placemark>
+<Placemark><name>Polyaigos</name>
+<description><![CDATA[Bezludna wyspa przy Kimolos. Najczystsza woda w Grecji. Kotwicowisko Ormos Ammoudaraki.]]></description>
+<styleUrl>#p_woda</styleUrl>
+<Point><coordinates>24.6600,36.7650,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Zabytki i kultura</name>
+<Placemark><name>Świątynia Afai</name>
+<description><![CDATA[Najlepiej zachowana świątynia archaiczna poza Atenami. Ok. 500 r. p.n.e.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>23.5334,37.7536,0</coordinates></Point></Placemark>
+<Placemark><name>Teatr w Epidauros</name>
+<description><![CDATA[UNESCO. Akustyka — szept ze sceny słychać w ostatnim rzędzie. IV w. p.n.e.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>23.0790,37.5960,0</coordinates></Point></Placemark>
+<Placemark><name>Przylądek Sounion</name>
+<description><![CDATA[Świątynia Posejdona na klifie. Z wody o zachodzie słońca — najlepszy ostatni wieczór rejsu.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>24.0250,37.6500,0</coordinates></Point></Placemark>
+<Placemark><name>Lew z Kea</name>
+<description><![CDATA[Archaiczny lew wykuty w skale, VI w. p.n.e. Spacer z Ioulidy.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>24.3450,37.6720,0</coordinates></Point></Placemark>
+<Placemark><name>Chrissopigi</name>
+<description><![CDATA[Klasztor na skalnym cyplu odciętym szczeliną. Ikona Sifnos.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>24.7530,36.9200,0</coordinates></Point></Placemark>
+<Placemark><name>Kastro, Sifnos</name>
+<description><![CDATA[Średniowieczne miasteczko-forteca nad urwiskiem, weneckie herby w murach.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>24.7550,36.9770,0</coordinates></Point></Placemark>
+<Placemark><name>Plaka (Chora Milos)</name>
+<description><![CDATA[Stolica wyspy na grani, zachód słońca z ruin kasztelu.]]></description>
+<styleUrl>#p_zabytek</styleUrl>
+<Point><coordinates>24.4230,36.7480,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Plaże i kąpieliska</name>
+<Placemark><name>Agkistri</name>
+<description><![CDATA[Sosnowa wyspa obok Eginy. Przystanek na kąpiel w drodze powrotnej.]]></description>
+<styleUrl>#p_plaza</styleUrl>
+<Point><coordinates>23.3430,37.7020,0</coordinates></Point></Placemark>
+<Placemark><name>Vlychos / Spilia</name>
+<description><![CDATA[Kąpieliska na skałach 20 min spacerem od portu Hydry. Zachód słońca.]]></description>
+<styleUrl>#p_plaza</styleUrl>
+<Point><coordinates>23.4420,37.3460,0</coordinates></Point></Placemark>
+<Placemark><name>Kolona, Kythnos</name>
+<description><![CDATA[Piaszczysty przesmyk łączący wyspę z wysepką — woda z obu stron. Kotwicowisko.]]></description>
+<styleUrl>#p_plaza</styleUrl>
+<Point><coordinates>24.3830,37.4180,0</coordinates></Point></Placemark>
+<Placemark><name>Loutra, Kythnos</name>
+<description><![CDATA[Gorące źródła termalne wpadające prosto do morza, mały port.]]></description>
+<styleUrl>#p_plaza</styleUrl>
+<Point><coordinates>24.4330,37.4380,0</coordinates></Point></Placemark>
+<Placemark><name>Sarakiniko</name>
+<description><![CDATA[Księżycowy krajobraz z białego tufu wulkanicznego. Najbardziej rozpoznawalne miejsce Milos.]]></description>
+<styleUrl>#p_plaza</styleUrl>
+<Point><coordinates>24.4690,36.7560,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Warianty trasy</name>
+<Placemark><name>Wariant Milos (główny)</name>
+<description><![CDATA[Marina Alimos → Poros → Hydra (port) → Ormos Milou / Adamas → Polyaigos → Ormos Milou / Adamas → Vathi, Sifnos → Serifos (Livadi) → Kolona, Kythnos → Vourkari, Kea → Marina Alimos]]></description>
+<styleUrl>#r_WariantMilos</styleUrl>
+<LineString><tessellate>1</tessellate><coordinates>23.701,37.9128,0 23.4527,37.499,0 23.4658,37.3494,0 24.447,36.723,0 24.66,36.765,0 24.447,36.723,0 24.66,36.933,0 24.515,37.147,0 24.383,37.418,0 24.32,37.665,0 23.701,37.9128,0</coordinates></LineString></Placemark>
+<Placemark><name>Wariant A — Sarońska</name>
+<description><![CDATA[Marina Alimos → Perdika, Aegina → Poros → Hydra (port) → Spetses → Ermioni → Palaia Epidavros → Agkistri → Marina Alimos]]></description>
+<styleUrl>#r_WariantASaro</styleUrl>
+<LineString><tessellate>1</tessellate><coordinates>23.701,37.9128,0 23.4566,37.7086,0 23.4527,37.499,0 23.4658,37.3494,0 23.156,37.262,0 23.248,37.388,0 23.16,37.63,0 23.343,37.702,0 23.701,37.9128,0</coordinates></LineString></Placemark>
+<Placemark><name>Wariant B — zach. Cyklady</name>
+<description><![CDATA[Marina Alimos → Vourkari, Kea → Kolona, Kythnos → Serifos (Livadi) → Kamares, Sifnos → Loutra, Kythnos → Przylądek Sounion → Marina Alimos]]></description>
+<styleUrl>#r_WariantBzach</styleUrl>
+<LineString><tessellate>1</tessellate><coordinates>23.701,37.9128,0 24.32,37.665,0 24.383,37.418,0 24.515,37.147,0 24.67,36.989,0 24.433,37.438,0 24.025,37.65,0 23.701,37.9128,0</coordinates></LineString></Placemark>
+</Folder>
+</Document></kml>
